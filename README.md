@@ -117,3 +117,5 @@ It would seem the only effect this may have on your use of ULIDs generated withi
 For example, if your Cloudflare function was very slow, running for seconds, when you reach the point in your code where the ULID is generated it may have a timestamp component that is stale and represents the start time of your request. If your use case requires extreme accuracy of the ULID timestamp you would be advised to generate your ULIDs in an environment that supports access to high precision clock values that are in lockstep with wall time (e.g. run your own Deno or NodeJS server on a bare metal server with an accurate NTP synced clock).
 
 Most use cases for ULIDs probably do not demand this level of timestamp precision, and are primarily concerned with no-conflict uniqueness and lexical sortability. If this is not the case for you then Cloudflare Workers may not be the right choice for ULID generation (or perhaps your application in general).
+
+If you never decode your ULID to extract the timestamp, and only care about the uniqueness and lexical sort of the ULIDs, you probably need not care about any of this.
