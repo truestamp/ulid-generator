@@ -1,0 +1,12 @@
+name = "ulid-generator"
+type = "javascript"
+zone_id = "dfde562d26487f5e3d6f3ec412bb16a6"
+account_id = "695154f6abd64a9df3e04b21e0aa0fc4"
+route = "ulid.truestamp.com"
+workers_dev = false
+compatibility_date = "2022-01-02"
+
+[build]
+command = "npm install && npm run build"
+[build.upload]
+format = "service-worker"
