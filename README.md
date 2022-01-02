@@ -20,7 +20,7 @@ Calling the worker with no params will generate a JSON array with a single objec
 
 #### Example
 
-[https://ulid.truestamp.com](`https://ulid.truestamp.com`)
+[https://ulid.truestamp.com](https://ulid.truestamp.com)
 
 ```sh
 ❯ https --print b https://ulid.truestamp.com
@@ -39,7 +39,7 @@ Pass a `?q=n` query string param, where `n` is the quantity of ULID's you want g
 
 #### Example : Generate three ULIDs
 
-[https://ulid.truestamp.com/?q=3](`https://ulid.truestamp.com/?q=3`)
+[https://ulid.truestamp.com/?q=3](https://ulid.truestamp.com/?q=3)
 
 ```sh
 ❯ https --print b https://ulid.truestamp.com q==3
@@ -68,7 +68,7 @@ The monotonic ULID factory is used by default. You can override this by setting 
 
 #### Example : Do not use Monotonic function
 
-[https://ulid.truestamp.com/?m=false](`https://ulid.truestamp.com/?m=false`)
+[https://ulid.truestamp.com/?m=false](https://ulid.truestamp.com/?m=false)
 
 ```sh
 ❯ https --print b https://ulid.truestamp.com m==false
@@ -91,7 +91,7 @@ If a seed value is specified the `monotonic` property will always be `false` and
 
 #### Example : Specify a seed value
 
-[https://ulid.truestamp.com/?s=1469918176385](`https://ulid.truestamp.com/?s=1469918176385`)
+[https://ulid.truestamp.com/?s=1469918176385](https://ulid.truestamp.com/?s=1469918176385)
 
 ```sh
 ❯ https --print b https://ulid.truestamp.com s==1469918176385
