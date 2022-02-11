@@ -1,4 +1,4 @@
-import { handleRequest } from '../src/handler'
+import handleRequest from '../src/index'
 import makeServiceWorkerEnv from 'service-worker-mock'
 import { decodeTime } from 'ulid-workers'
 

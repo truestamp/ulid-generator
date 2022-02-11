@@ -1,12 +1,22 @@
 name = "ulid-generator"
+# type = "javascript" is required to use the `[build]` section
 type = "javascript"
 zone_id = "dfde562d26487f5e3d6f3ec412bb16a6"
 account_id = "695154f6abd64a9df3e04b21e0aa0fc4"
 route = "ulid.truestamp.com"
-workers_dev = false
+workers_dev = true
 compatibility_date = "2022-01-02"
 
 [build]
 command = "npm install && npm run build"
 [build.upload]
-format = "service-worker"
+# The "modules" upload format is required for all projects that export a Durable Objects class
+format = "modules"
+main = "./index.mjs"
+
+[durable_objects]
+bindings = [{name = "MONOTONIC_ULID", class_name = "MonotonicULID"}]
+
+[[migrations]]
+tag = "v1" # Should be unique for each entry
+new_classes = ["MonotonicULID"]
