@@ -15,7 +15,8 @@ This API allows you to exercise the full capability of the ULID library by passi
 Calling the worker with no params will generate a JSON array with a single object that contains the following properties:
 
 - `monotonic` - a boolean indicating whether the monotonic ULID factory was used (default : true).
-- `ts` - an `ISO-8601` timestamp of the Cloudflare Worker request time.
+- `t` - a timestamp of the Cloudflare Worker request time or timestamp override as a UNIX epoch in ms.
+- `ts` - an `ISO-8601` timestamp of the Cloudflare Worker request time or timestamp override.
 - `ulid` - the ULID value.
 
 #### Example
@@ -27,8 +28,9 @@ Calling the worker with no params will generate a JSON array with a single objec
 [
     {
         "monotonic": true,
-        "ts": "2022-01-02T17:36:08.145Z",
-        "ulid": "01FRDXSRYHTEFJ56Q490VJPRXV"
+        "t": 1644553616119,
+        "ts": "2022-02-11T04:26:56.119Z",
+        "ulid": "01FVKGHEQQJ3CBH1G1HDEG8YPS"
     }
 ]
 ```
@@ -46,18 +48,21 @@ Pass a `?q=n` query string param, where `n` is the quantity of ULID's you want g
 [
     {
         "monotonic": true,
-        "ts": "2022-01-02T17:38:35.822Z",
-        "ulid": "01FRDXY95ETSPBVT447N2GPDZ7"
+        "t": 1644553645224,
+        "ts": "2022-02-11T04:27:25.224Z",
+        "ulid": "01FVKGJB58M3ERB35J6KFKPPK8"
     },
     {
         "monotonic": true,
-        "ts": "2022-01-02T17:38:35.822Z",
-        "ulid": "01FRDXY95ETSPBVT447N2GPDZ8"
+        "t": 1644553645224,
+        "ts": "2022-02-11T04:27:25.224Z",
+        "ulid": "01FVKGJB58M3ERB35J6KFKPPK9"
     },
     {
         "monotonic": true,
-        "ts": "2022-01-02T17:38:35.822Z",
-        "ulid": "01FRDXY95ETSPBVT447N2GPDZ9"
+        "t": 1644553645224,
+        "ts": "2022-02-11T04:27:25.224Z",
+        "ulid": "01FVKGJB58M3ERB35J6KFKPPKA"
     }
 ]
 ```
@@ -75,31 +80,29 @@ The monotonic ULID factory is used by default. You can override this by setting 
 [
     {
         "monotonic": false,
-        "ts": "2022-01-02T17:42:36.537Z",
-        "ulid": "01FRDY5M7SC2GEH115CX1MVY3F"
+        "t": 1644553683002,
+        "ts": "2022-02-11T04:28:03.002Z",
+        "ulid": "01FVKGKG1TE8K09B9PBSZR41GY"
     }
 ]
 ```
 
-### Seed
+### Timestamp Override
 
-By default the ULID will be generated with the current time of the Cloudflare Worker request as milliseconds from the UNIX Epoch. You can override the timestamp component of the ULID by passing in a seed value that is a number interpreted as the number of milliseconds from the UNIX Epoch.
+By default the ULID will be generated with the current time of the Cloudflare Worker request as milliseconds from the UNIX Epoch. You can override the timestamp component of the ULID by passing in a timestamp value that is a number interpreted as the number of milliseconds from the UNIX Epoch.
 
-#### Note
+#### Example : Specify a timestamp value
 
-If a seed value is specified the `monotonic` property will always be `false` and the `ts` property will still reflect the time at the start of the request, not the `seed` time.
-
-#### Example : Specify a seed value
-
-[https://ulid.truestamp.com/?s=1469918176385](https://ulid.truestamp.com/?s=1469918176385)
+[https://ulid.truestamp.com/?t=1469918176385](https://ulid.truestamp.com/?t=1469918176385)
 
 ```sh
-❯ https --print b https://ulid.truestamp.com s==1469918176385
+❯ https --print b https://ulid.truestamp.com t==1469918176385
 [
     {
-        "monotonic": false,
-        "ts": "2022-01-02T17:43:11.912Z",
-        "ulid": "01ARYZ6S41W35EQ2JQ634TH006"
+        "monotonic": true,
+        "t": 1469918176385,
+        "ts": "2016-07-30T22:36:16.385Z",
+        "ulid": "01ARYZ6S41KRGGPEHFA2V7C7ZQ"
     }
 ]
 ```
