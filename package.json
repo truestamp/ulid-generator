@@ -1,5 +1,5 @@
 {
-  "name": "worker-typescript-template",
+  "name": "ulid-generator",
   "version": "1.0.0",
   "description": "Cloudflare API worker to generate large quantities of ULIDs",
   "main": "dist/worker.js",
