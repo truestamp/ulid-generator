@@ -1,0 +1,11 @@
+{
+  "tabs": [
+    {
+      "cd": ".",
+      "commands": [
+        "npm install && gitup commit && /usr/local/bin/code . && npm run start",
+        "date"
+      ]
+    }
+  ]
+}
