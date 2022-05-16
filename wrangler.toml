@@ -6,7 +6,7 @@ workers_dev = true
 compatibility_date = "2022-05-16"
 
 [build]
-command = "npm install && npm run build"
+command = "npm install"
 
 [durable_objects]
 bindings = [{name = "MONOTONIC_ULID", class_name = "MonotonicULID"}]
