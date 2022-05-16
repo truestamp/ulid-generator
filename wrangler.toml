@@ -1,7 +1,6 @@
 name = "ulid-generator"
 main = "src/index.ts"
 account_id = "695154f6abd64a9df3e04b21e0aa0fc4"
-route = { pattern = "*ulid.truestamp.com/*", zone_name = "truestamp.com" }
 workers_dev = true
 compatibility_date = "2022-05-16"
 
