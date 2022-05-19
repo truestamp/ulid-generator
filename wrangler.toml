@@ -6,6 +6,10 @@ compatibility_date = "2022-05-16"
 [build]
 command = "npm install"
 
+[env]
+route = { pattern = "ulid.truestamp.com", zone_name = "truestamp.com", custom_domain = true }
+workers_dev = true
+
 [durable_objects]
 bindings = [{name = "MONOTONIC_ULID", class_name = "MonotonicULID"}]
 
