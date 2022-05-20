@@ -2,9 +2,7 @@
   "compilerOptions": {
     "outDir": "tscOutDir",
     "target": "esnext",
-    "lib": [
-      "esnext"
-    ],
+    "lib": ["esnext"],
     "alwaysStrict": true,
     "strict": true,
     "noEmitOnError": true,
@@ -19,12 +17,6 @@
       "@types/node"
     ]
   },
-  "include": [
-    "src"
-  ],
-  "exclude": [
-    "node_modules",
-    "dist",
-    "test"
-  ]
+  "include": ["src"],
+  "exclude": ["node_modules", "test"]
 }

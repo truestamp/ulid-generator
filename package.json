@@ -8,8 +8,8 @@
     "format": "prettier --write  '*.{json,js}' 'src/**/*.{js,ts}' 'test/**/*.{js,ts}'",
     "lint": "eslint --max-warnings=0 src && prettier --check '*.{json,js}' 'src/**/*.{js,ts}' 'test/**/*.{js,ts}'",
     "test": "jest --config jestconfig.json --verbose",
-    "start": "npx wrangler dev --local",
-    "publish": "npx wrangler publish"
+    "start": "wrangler dev --local",
+    "publish": "npm run lint && npm run format && wrangler publish --legacy-env=true"
   },
   "author": "Truestamp <support@truestamp.com>",
   "license": "MIT",
