@@ -11,7 +11,7 @@ export class MonotonicULID {
   state: DurableObjectState
 
   // eslint-disable-next-line prettier/prettier
-  constructor(state: DurableObjectState) {
+  constructor (state: DurableObjectState) {
     this.state = state
   }
 
