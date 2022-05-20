@@ -2,24 +2,17 @@
   "private": true,
   "name": "ulid-generator",
   "version": "1.0.0",
-  "description": "Cloudflare API worker to generate large quantities of ULIDs",
-  "module": "./dist/index.mjs",
+  "description": "Cloudflare worker to generate large quantities of monotonic ULIDs",
+  "type": "module",
   "scripts": {
-    "format": "prettier --write  '*.{json,js}' 'src/**/*.{js,ts}' 'test/**/*.{js,ts}'",
-    "lint": "eslint --max-warnings=0 src && prettier --check '*.{json,js}' 'src/**/*.{js,ts}' 'test/**/*.{js,ts}'",
+    "format": "prettier --write  '*.{json,js}' 'src/**/*.ts' 'tests/**/*.spec.ts'",
+    "lint": "eslint --max-warnings=0 src && prettier --check '*.{json,js}' 'src/**/*.{js,ts}' 'tests/**/*.{js,ts}'",
     "test": "jest --config jestconfig.json --verbose",
     "start": "wrangler dev --local",
     "publish": "npm run lint && npm run format && wrangler publish --legacy-env=true"
   },
   "author": "Truestamp <support@truestamp.com>",
   "license": "MIT",
-  "eslintConfig": {
-    "root": true,
-    "extends": [
-      "typescript",
-      "prettier"
-    ]
-  },
   "devDependencies": {
     "@cloudflare/workers-types": "^3.10.0",
     "@types/jest": "^27.5.1",
@@ -30,6 +23,10 @@
     "eslint": "^8.15.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-config-typescript": "^3.0.0",
+    "eslint-plugin-eslint-comments": "^3.2.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jest": "^26.2.2",
+    "eslint-plugin-prettier": "^4.0.0",
     "jest": "^28.1.0",
     "prettier": "^2.6.2",
     "service-worker-mock": "^2.0.5",
@@ -37,9 +34,7 @@
     "ts-loader": "^9.3.0",
     "tslib": "^2.4.0",
     "typescript": "^4.6.4",
+    "ulid-workers": "^2.0.0",
     "wrangler": "^2.0.6"
-  },
-  "dependencies": {
-    "ulid-workers": "^2.0.0"
   }
 }

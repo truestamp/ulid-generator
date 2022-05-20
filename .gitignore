@@ -1,4 +1,7 @@
-dist
+.DS_Store
+*.log
+.vscode
+docs
+lib
 node_modules
-transpiled
-/.idea/
+coverage

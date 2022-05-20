@@ -10,17 +10,19 @@ interface ULIDObject {
 export class MonotonicULID {
   state: DurableObjectState
 
+  // eslint-disable-next-line prettier/prettier
   constructor(state: DurableObjectState) {
     this.state = state
   }
 
   // Handle HTTP requests from clients.
-  async fetch(request: Request) {
+  // eslint-disable-next-line @typescript-eslint/require-await
+  async fetch(request: Request): Promise<Response> {
     const { searchParams } = new URL(request.url)
     const url = new URL(request.url)
 
     // q is the query parameter the represents how many ulids to generate "?q=10"
-    const quantity = parseInt(searchParams.get('q') || '1', 10)
+    const quantity = parseInt(searchParams.get('q') ?? '1', 10)
 
     const ulids: ULIDObject[] = []
 

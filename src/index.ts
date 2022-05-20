@@ -6,7 +6,7 @@ interface Env {
   MONOTONIC_ULID: DurableObjectNamespace
 }
 
-async function handleRequest(request: Request, env: Env) {
+async function handleRequest(request: Request, env: Env): Promise<Response> {
   const { searchParams } = new URL(request.url)
 
   // q is the query parameter the represents how many ulids to generate "?q=10"
@@ -31,10 +31,10 @@ async function handleRequest(request: Request, env: Env) {
   }
 
   // 'default' is an arbitrary name, and will always return the same id
-  const id = env.MONOTONIC_ULID.idFromName('default')
-  const stub = env.MONOTONIC_ULID.get(id)
-  // the hostname 'object' is arbitrary, and will always point to the Durable Object
-  const response = await stub.fetch('http://object/?q=' + quantity)
+  const id: DurableObjectId = env.MONOTONIC_ULID.idFromName('default')
+  const stub: DurableObjectStub = env.MONOTONIC_ULID.get(id)
+  // The hostname 'object' is arbitrary, and will always point to the Durable Object
+  const response = await stub.fetch(`http://object/?q=${quantity}`)
   const ulids = await response.json()
 
   return new Response(`${JSON.stringify(ulids, null, 2)}`, {
@@ -48,8 +48,12 @@ export default {
   async fetch(request: Request, env: Env) {
     try {
       return await handleRequest(request, env)
-    } catch (e) {
-      return new Response(`${e}`)
+    } catch (error) {
+      if (error instanceof Error) {
+        return new Response(`Error : ${error.message}`)
+      } else {
+        return new Response(`Unknown error`)
+      }
     }
   },
 }
