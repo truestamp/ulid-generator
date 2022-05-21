@@ -10,7 +10,7 @@ interface ULIDObject {
 export class MonotonicULID {
   state: DurableObjectState
 
-  // eslint-disable-next-line prettier/prettier
+  // prettier-ignore
   constructor (state: DurableObjectState) {
     this.state = state
   }
