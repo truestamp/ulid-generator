@@ -1,12 +1,2 @@
 node_modules
 tests
-jest.config.mjs
-examples/**/*.cjs
-examples/**/*.ts
-examples/**/*.js
-perf.js
-lib
-esbuild.node.cjs
-esbuild.module.cjs
-esbuild.iife.cjs
-mod.ts
